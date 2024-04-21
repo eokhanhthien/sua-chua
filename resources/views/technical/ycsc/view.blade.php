@@ -50,7 +50,7 @@
             @if($hoadon->TrangThaiThanhToan == 0)
             <span class="text-success">Chưa thanh toán</span>
             @elseif($hoadon->TrangThaiThanhToan == 1)
-            <span class="text-success">Dã thanh toán</span>
+            <span class="text-success">Đã thanh toán</span>
 
             @elseif($hoadon->TrangThaiThanhToan == 2)
             <span class="text-success">Đã hủy</span>

@@ -23,9 +23,13 @@ class IndexController extends Controller
         if (Auth::guard('user')->check()) {
             // Người dùng union_member đã đăng nhập, tiếp tục hiển thị trang dashboard của họ
             if (Auth::guard('user')->user()->ID_Nhom == 1) {
-                return view('admin.dashboard.index');
+                $tho = NguoiDung::where('ID_Nhom', 2)->get();
+                $khach = NguoiDung::where('ID_Nhom', 3)->get();
+                $dichvu = DichVu::get();
+                return view('admin.dashboard.index',compact('tho','khach','dichvu'));
             }elseif(Auth::guard('user')->user()->ID_Nhom == 2){
-                return view('technical.dashboard.index');
+                $don = YeuCauSuaChua::where('ID_Tho', Auth::guard('user')->user()->id)->get();
+                return view('technical.dashboard.index',compact('don'));
             }
             
         }
@@ -523,5 +527,13 @@ class IndexController extends Controller
         $ycsc = YeuCauSuaChua::find($id);
         $hoadon= HoaDon::where('ID_YeuCauSuaChua',$id)->first();
         return view('client.view',compact('ycsc','hoadon'));
+    }
+
+    public function danhGiaHoaDon(Request $request)
+    {
+        $hoadon=HoaDon::find($request->id_hoa_don);
+        $hoadon->DanhGiaDichVu = $request->danhgia;
+        $hoadon->save();
+        return redirect()->back()->with('success','Cập nhật thông tin thành công');
     }
 }

@@ -17,9 +17,6 @@
 
 
 <div class="p-5">
-    <a href="{{route('technical.yeu_cau_sua_chua')}}">
-        <button class="btn btn-primary mb-4"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button>
-    </a>
 
 <h5>Hóa đơn</h5>
 <form action="{{route('technical.check_hoa_don')}}" method="POST" enctype="multipart/form-data" >
@@ -50,7 +47,7 @@
             @if($hoadon->TrangThaiThanhToan == 0)
             <span class="text-success">Chưa thanh toán</span>
             @elseif($hoadon->TrangThaiThanhToan == 1)
-            <span class="text-success">Dã thanh toán</span>
+            <span class="text-success">Đã thanh toán</span>
 
             @elseif($hoadon->TrangThaiThanhToan == 2)
             <span class="text-success">Đã hủy</span>
@@ -79,6 +76,23 @@
 
 </form>
 
+@if($hoadon->DanhGiaDichVu == "")
+    @if($hoadon->TrangThaiThanhToan == 1)
+        <form action="{{route('client.danhgia')}}" method="POST" enctype="multipart/form-data" >
+            @csrf
+            <div class="form-group">
+                <label for="danhgia">Đánh giá đơn</label>
+                <input type="text" name="danhgia" id="danhgia" class="form-control" value="">
+            </div>
+            <input type="hidden" name="id_hoa_don" value="{{$hoadon->id}}">
+
+            <button type="submit" class="btn btn-success col-3" id="">Đánh giá</button>
+        </form>
+    @endif
+
+@else
+        <div>Đánh giá của bạn: {{$hoadon->DanhGiaDichVu}}</div>
+@endif
 
 
 </div>

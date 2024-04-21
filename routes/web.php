@@ -94,3 +94,5 @@ Route::get('/client/profile', [IndexController::class,'profileClient'])->name('c
 Route::post('/client/profile', [IndexController::class,'updateprofileClient'])->name('client.profile');
 Route::get('/client/ycsc', [IndexController::class,'yeuCauClient'])->name('client.yeucau');
 Route::get('/khach/hoa-don/{id}', [IndexController::class,'clientHoaDon'])->name('client.hoa_don');
+
+Route::post('/tho-sua/danhgia-hoa-don', [IndexController::class,'danhGiaHoaDon'])->name('client.danhgia');
