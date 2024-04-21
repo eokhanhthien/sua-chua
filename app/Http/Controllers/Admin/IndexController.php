@@ -11,6 +11,7 @@ use App\Models\DichVu;
 use App\Models\NhomNguoiDung;
 use App\Models\KhaNangSuaChua;
 use App\Models\YeuCauSuaChua;
+use App\Models\HoaDon;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -373,6 +374,27 @@ class IndexController extends Controller
         return redirect('/tho-sua/knsc')->with('success', 'Xóa knsc thành công');
     }
 
+    public function technicalYeuCauSuaChua()
+    {
+        $ycsc = YeuCauSuaChua::where('ID_Tho',Auth::guard('user')->user()->id)->get();
+        return view('technical.ycsc.index', compact('ycsc'));
+    }
+
+    public function technicalHoaDon(Request $request, $id){ 
+        $ycsc = YeuCauSuaChua::find($id);
+        $hoadon= HoaDon::where('ID_YeuCauSuaChua',$id)->first();
+        return view('technical.ycsc.view',compact('ycsc','hoadon'));
+    }
+
+    public function technicalCheckHoaDon(Request $request){
+        $hoadon=HoaDon::find($request->id_hoa_don);
+        $hoadon->TrangThaiThanhToan = $request->status;
+        if(isset($request->note)){
+            $hoadon->LyDoHuyDon = $request->note;
+        }
+        $hoadon->save();
+        return redirect('/tho-sua/yeu-cau-sua-chua')->with('success', 'Cập nhật thành công');
+    }
 
     // Khách hàng
 
@@ -444,13 +466,62 @@ class IndexController extends Controller
     }
 
     public function yeuCauSua(Request $request){
+        $khach = NguoiDung::find($request->ID_Khach);
+        if($khach->SDT == ""){
+            $khach->SDT = $request->phone;
+            $khach->save();
+        }
+
+        if($khach->DiaChi == ""){
+            $khach->DiaChi = $request->address;
+            $khach->save();
+        }
+
         $ycsc = new YeuCauSuaChua();
         $ycsc->ID_DichVu = $request->ID_DichVu;
         $ycsc->ID_Tho = $request->ID_Tho;
         $ycsc->ID_Khach = $request->ID_Khach;
         $ycsc->MoTa = $request->description;
         $ycsc->save();
+
+        $knsc = KhaNangSuaChua::where('ID_DichVu', $request->ID_DichVu)->first();
+        $hoadon = new HoaDon();
+        $hoadon->ID_YeuCauSuaChua = $ycsc->id;
+        $hoadon->ID_Tho = $request->ID_Tho;
+        $hoadon->TongTien =   $knsc->GiaTho;
+        $hoadon->TrangThaiThanhToan = 0;
+        $hoadon->LyDoHuyDon = "";
+        $hoadon->save();
         return redirect()->back()->with('success','Yêu cầu thành công thành công');
     }
 
+    public function profileClient(){
+        $NguoiDung = NguoiDung::find(Auth::guard('user')->user()->id);
+        return view('client.profile',compact('NguoiDung'));
+    }
+
+    public function updateprofileClient(Request $request){
+      $NguoiDung = NguoiDung::find(Auth::guard('user')->user()->id);
+      $NguoiDung ->HoTen = $request->full_name;
+      if($request->password){
+        $NguoiDung->password = bcrypt($request->password);
+        }
+        $NguoiDung->GioiTinh = $request->gender;
+        $NguoiDung->DiaChi = $request->address;
+        $NguoiDung->SDT = $request->phone_number;
+        $NguoiDung->save();
+        return redirect()->back()->with('success','Cập nhật thông tin thành công');
+    }
+
+
+    public function yeuCauClient(){
+        $ycsc = YeuCauSuaChua::where('ID_Khach',Auth::guard('user')->user()->id)->get();
+        return view('client.ycsc',compact('ycsc'));
+    }
+
+    public function clientHoaDon(Request $request, $id){ 
+        $ycsc = YeuCauSuaChua::find($id);
+        $hoadon= HoaDon::where('ID_YeuCauSuaChua',$id)->first();
+        return view('client.view',compact('ycsc','hoadon'));
+    }
 }

@@ -12,8 +12,20 @@ class YeuCauSuaChua extends Model
     protected $fillable = [
         'ID_DichVu',
         'ID_Khach',
+        'ID_Tho',
         'MoTa',
     ];
+
+
+    public function khach()
+    {
+        return $this->hasOne('App\Models\NguoiDung', 'id', 'ID_Khach');
+    }
+
+    public function dichvu()
+    {
+        return $this->hasOne('App\Models\DichVu', 'id', 'ID_DichVu');
+    }
 
 
 }

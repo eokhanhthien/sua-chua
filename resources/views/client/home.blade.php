@@ -346,7 +346,7 @@ Với kinh nghiệm nhiều năm trong ngành và đội ngũ kỹ thuật viên
   <section class="info_section ">
     <div class="container">
       <h4>
-        Get In Touch
+        Kết nối thợ nhanh chóng
       </h4>
       <div class="row">
         <div class="col-lg-10 mx-auto">
@@ -359,7 +359,7 @@ Với kinh nghiệm nhiều năm trong ngành và đội ngũ kỹ thuật viên
                       <i class="fa fa-map-marker" aria-hidden="true"></i>
                     </div>
                     <p>
-                      Lorem Ipsum is simply dummy text
+                      Địa điểm
                     </p>
                   </div>
                 </a>
@@ -371,7 +371,7 @@ Với kinh nghiệm nhiều năm trong ngành và đội ngũ kỹ thuật viên
                       <i class="fa fa-phone" aria-hidden="true"></i>
                     </div>
                     <p>
-                      +02 1234567890
+                      Điện thoại
                     </p>
                   </div>
                 </a>
@@ -383,7 +383,7 @@ Với kinh nghiệm nhiều năm trong ngành và đội ngũ kỹ thuật viên
                       <i class="fa fa-envelope" aria-hidden="true"></i>
                     </div>
                     <p>
-                      demo@gmail.com
+                      Mail
                     </p>
                   </div>
                 </a>
@@ -395,7 +395,7 @@ Với kinh nghiệm nhiều năm trong ngành và đội ngũ kỹ thuật viên
     </div>
     <div class="social-box">
       <h4>
-        Follow Us
+        Follow chúng tôi
       </h4>
       <div class="box">
         <a href="">

@@ -128,8 +128,8 @@
                     <div class="dropdown">
                       <a class="nav-link" class="nut_dropdown">{{Auth::guard('user')->user()->HoTen}}</a>
                       <div class="noidung_dropdown">
-                        <a href="#">Thông tin cá nhân</a>
-                        <a href="#">Yêu cầu</a>
+                        <a href="{{route('client.profile')}}">Thông tin cá nhân</a>
+                        <a href="{{route('client.yeucau')}}">Yêu cầu</a>
                         <a href="{{route('client.logout')}}" href="#">Đăng xuất</a>
                       </div>
                     </div>

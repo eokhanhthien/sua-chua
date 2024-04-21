@@ -71,6 +71,9 @@ Route::post('/tho-sua/update-knsc/{id}', [IndexController::class,'technicalupdat
 Route::get('/tho-sua/delete-knsc/{id}', [IndexController::class,'technicaldeleteKNSC'])->name('technical.deleteknsc');
 
 
+Route::get('/tho-sua/yeu-cau-sua-chua', [IndexController::class,'technicalYeuCauSuaChua'])->name('technical.yeu_cau_sua_chua');
+Route::get('/tho-sua/hoa-don/{id}', [IndexController::class,'technicalHoaDon'])->name('technical.hoa_don');
+Route::post('/tho-sua/check-hoa-don', [IndexController::class,'technicalCheckHoaDon'])->name('technical.check_hoa_don');
 
 
 // Khách hàng
@@ -87,3 +90,7 @@ Route::get('/client/dat-dich-vu/{id}', [IndexController::class,'dat_dich_vu'])->
 Route::get('/client/lienhe/{id}', [IndexController::class,'lienHeTho'])->name('client.lienhe');
 
 Route::post('/client/yeucau', [IndexController::class,'yeuCauSua'])->name('client.yeucau');
+Route::get('/client/profile', [IndexController::class,'profileClient'])->name('client.profile');
+Route::post('/client/profile', [IndexController::class,'updateprofileClient'])->name('client.profile');
+Route::get('/client/ycsc', [IndexController::class,'yeuCauClient'])->name('client.yeucau');
+Route::get('/khach/hoa-don/{id}', [IndexController::class,'clientHoaDon'])->name('client.hoa_don');

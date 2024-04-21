@@ -32,11 +32,14 @@ style="background-color: rgb(250, 250, 250);"
                   <input name="phone" type="text" placeholder="Số điện thoại của bạn" value="{{Auth::guard('user')->user()->SDT}}" required/>
                 </div>
                 <div>
+                  <input name="address" type="text" placeholder="Địa chỉ của bạn" value="{{Auth::guard('user')->user()->DiaChi}}" required/>
+                </div>
+                <div>
                   <input name="email" type="email" placeholder="Email" value="{{Auth::guard('user')->user()->email}}" required/>
                 </div>
                 <div>
                   <input name="description" type="text" class="message-box" placeholder="Mô tả yêu cầu" required/>
-                  <input name="ID_DichVu" value="{{$knsc->id}}" type="hidden" class="message-box" placeholder="Mô tả yêu cầu"/>
+                  <input name="ID_DichVu" value="{{$knsc->ID_DichVu}}" type="hidden" class="message-box" placeholder="Mô tả yêu cầu"/>
                   <input name="ID_Tho" value="{{$knsc->tho->id}}" type="hidden" class="message-box" placeholder="Mô tả yêu cầu"/>
                   <input name="ID_Khach" value="{{Auth::guard('user')->user()->id}}" type="hidden" class="message-box" placeholder="Mô tả yêu cầu"/>
                 </div>
