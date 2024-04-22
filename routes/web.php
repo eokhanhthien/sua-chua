@@ -47,6 +47,7 @@ Route::get('/member', [IndexController::class,'member'])->name('admin.member.ind
 Route::get('/create-member', [IndexController::class,'createMember'])->name('admin.member.create');
 Route::post('/store-member', [IndexController::class,'storeMember'])->name('admin.member.store');
 Route::get('/edit-member/{id}', [IndexController::class,'editMember'])->name('admin.member.edit');
+Route::get('/status-member/{id}', [IndexController::class,'statusMember'])->name('admin.member.status');
 Route::post('/update-member/{id}', [IndexController::class,'updateMember'])->name('admin.member.update');
 Route::get('/delete-member/{id}', [IndexController::class,'deleteMember'])->name('admin.member.delete');
 

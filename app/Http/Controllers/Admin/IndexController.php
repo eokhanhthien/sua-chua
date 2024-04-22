@@ -27,13 +27,15 @@ class IndexController extends Controller
                 $khach = NguoiDung::where('ID_Nhom', 3)->get();
                 $dichvu = DichVu::get();
                 return view('admin.dashboard.index',compact('tho','khach','dichvu'));
-            }elseif(Auth::guard('user')->user()->ID_Nhom == 2){
+            }elseif(Auth::guard('user')->user()->ID_Nhom == 2 && Auth::guard('user')->user()->TrangThai == 1){
                 $don = YeuCauSuaChua::where('ID_Tho', Auth::guard('user')->user()->id)->get();
                 return view('technical.dashboard.index',compact('don'));
+            }else{
+                Auth::guard('user')->logout();
+                return redirect()->route('admin.login.index')->with('error', 'Tài khoản của bạn chưa được duyệt');
             }
             
         }
-    
         // Nếu không phải union_member hoặc không đăng nhập, chuyển hướng đến trang đăng nhập admin
         return redirect()->route('admin.login.index');
     }
@@ -48,7 +50,8 @@ class IndexController extends Controller
         $union_member->HoTen = $request->full_name;
         $union_member->email = $request->email;
         $union_member->password = bcrypt($request->password);
-        $union_member->ID_Nhom = 1;
+        $union_member->ID_Nhom = 2;
+        $union_member->TrangThai = 0;
         $union_member->save();
         return redirect()->back();
     }
@@ -64,8 +67,9 @@ class IndexController extends Controller
                         return redirect()->route('admin.dashboard.index');
                     } 
                 }
-            } else {
                 return redirect()->back()->with('error', 'Sai thông tin đăng nhập');
+            }else{
+                return redirect()->route('admin.login.index')->with('error', 'Tài khoản của bạn chưa được duyệt');
             }
             } catch (ValidationException $e) {
             return redirect()->back()->withErrors(['message' => 'Email hoặc mật khẩu không chính xác'])->withInput();
@@ -239,6 +243,13 @@ class IndexController extends Controller
         $NguoiDung = NguoiDung::find($id);
         $NhomNguoiDung = NhomNguoiDung::all();
         return view('admin.nguoi_dung.edit',compact('NguoiDung','NhomNguoiDung'));
+    }
+
+    public function statusMember($id){
+        $NguoiDung = NguoiDung::find($id);
+        $NguoiDung->TrangThai = !$NguoiDung->TrangThai;
+        $NguoiDung->save();
+        return redirect('/member')->with('success', 'Đổi trạng thái thành công');
     }
 
     public function updateMember(Request $request, $id) {
@@ -460,6 +471,7 @@ class IndexController extends Controller
         $union_member->email = $request->email;
         $union_member->password = bcrypt($request->password);
         $union_member->ID_Nhom = 3;
+        $union_member->TrangThai = 1;
         $union_member->save();
         return redirect()->back()->with('success','Đăng ký thành công');
     }

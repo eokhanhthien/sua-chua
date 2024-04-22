@@ -32,6 +32,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">Nhóm</th>
+                <th scope="col">Trạng thái</th>
                 <th scope="col">Hành động</th>
               </tr>
             </thead>
@@ -43,6 +44,21 @@
                 <td>{{ $member->email }}</td>
                 <td>{{ $member->SDT }}</td>
                 <td>{{ $member->group?->Ten }}</td>
+                <td>
+                    @if($member->TrangThai == 1)
+                    <a style="text-decoration: none" href="{{route('admin.member.status', ['id' => $member->id ])}}">
+                        <button class="btn btn-success" style="border-radius: 50px">
+                            hoạt động
+                        </button>
+                    </a>
+                    @else
+                    <a style="text-decoration: none" href="{{route('admin.member.status', ['id' => $member->id ])}}">
+                        <button class="btn btn-danger" style="border-radius: 50px">
+                            Không hoạt động
+                        </button>
+                    </a>
+                    @endif
+                </td>
                 {{-- <td>{{ $member->background->classes->name }}</td> --}}
                 <td>
                     @if(!in_array($member->ID_Nhom, [1]))
