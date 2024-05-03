@@ -16,7 +16,11 @@ style="background-color: rgb(250, 250, 250);"
 
             <div class="box ">
               <div class="height: 90px; width: 100px">
+                @if($item->tho->Avatar)
                 <img style="height: 90px; width: 100px; object-fit: cover; border-radius: 50% " src="{{ asset('uploads/' . $item?->tho->Avatar) }}" alt="" />
+                @else
+                <img style="height: 90px; width: 100px; object-fit: cover; border-radius: 50% " src="https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png" alt="" />
+                @endif
               </div>
                 <div class="detail-box">
                 <h5>
