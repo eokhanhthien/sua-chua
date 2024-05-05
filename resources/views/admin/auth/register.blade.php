@@ -35,7 +35,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block ">
-                                <img src="https://upload.wikimedia.org/wikipedia/vi/0/09/Huy_Hi%E1%BB%87u_%C4%90o%C3%A0n.png" alt="">
+                                <img style="object-fit: cover; width: 100%" src="https://png.pngtree.com/png-clipart/20230824/original/pngtree-repair-of-household-appliances-abstract-concept-vector-illustration-picture-image_8410440.png" alt="">
                             </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
