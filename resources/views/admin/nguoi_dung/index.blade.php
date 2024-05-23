@@ -22,9 +22,9 @@
     </div>
 
     <!-- Content Row -->
-    <div class="row">
+    <div class="row card p-2 custom">
         <div class="col-12">
-        <table class="table table-striped" id="data-table">
+        <table class="table table-striped table-dark" id="data-table">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -63,7 +63,7 @@
                 <td>
                     @if(!in_array($member->ID_Nhom, [1]))
                     <a style="text-decoration: none" href="{{route('admin.member.edit', ['id' => $member->id ])}}">
-                        <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-info"><i class="fas fa-edit"></i></button>
                     </a>
                     <a style="text-decoration: none" href="{{route('admin.member.delete', ['id' => $member->id ])}}">
                         <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>

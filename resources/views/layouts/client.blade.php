@@ -101,7 +101,7 @@
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/">
               <span>
                 Inance
               </span>
@@ -113,6 +113,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('admin.register.index')}}">Đăng ký thợ</a>
+                </li>
                 <li class="nav-item ">
                   <a class="nav-link" href="{{route('client.home')}}">Trang chủ <span class="sr-only">(current)</span></a>
                 </li>
@@ -129,7 +132,7 @@
                       <a class="nav-link" class="nut_dropdown">{{Auth::guard('user')->user()->HoTen}}</a>
                       <div class="noidung_dropdown">
                         <a href="{{route('client.profile')}}">Thông tin cá nhân</a>
-                        <a href="{{route('client.yeucau')}}">Yêu cầu</a>
+                        <a href="{{route('client.yeucau.suachua')}}">Yêu cầu</a>
                         <a href="{{route('client.logout')}}" href="#">Đăng xuất</a>
                       </div>
                     </div>

@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('assets/css/style.css')}}" rel="stylesheet">
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
 
     <!-- Bao gồm tệp tin CSS của Toastr -->
@@ -49,7 +50,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -255,13 +256,13 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            {{-- <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
-            </footer>
+            </footer> --}}
             <!-- End of Footer -->
 
         </div>

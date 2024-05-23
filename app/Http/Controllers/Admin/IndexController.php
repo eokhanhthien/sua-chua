@@ -52,6 +52,8 @@ class IndexController extends Controller
         $union_member->password = bcrypt($request->password);
         $union_member->ID_Nhom = 2;
         $union_member->TrangThai = 0;
+        $union_member->CCCD = $request->cccd;
+        $union_member->SDT = $request->phone;
         $union_member->save();
         return redirect()->back();
     }
@@ -408,7 +410,7 @@ class IndexController extends Controller
             $hoadon->LyDoHuyDon = $request->note;
         }
         $hoadon->save();
-        return redirect('/tho-sua/yeu-cau-sua-chua')->with('success', 'Cập nhật thành công');
+        return redirect()->back()->with('success', 'Cập nhật thành công');
     }
 
     // Khách hàng

@@ -7,7 +7,7 @@
         <button class="btn btn-primary mb-4"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button>
     </a>
 <h5>Sửa nhóm người dùng</h5>
-<form action="{{route('admin.NhomNguoiDung.update', ['id' => $NhomNguoiDung->id ])}}" method="POST">
+<form action="{{route('admin.NhomNguoiDung.update', ['id' => $NhomNguoiDung->id ])}}" class="card p-2" method="POST">
     @csrf
     <div class="form-group">
         <label for="name">Tên nhóm người dùng</label>

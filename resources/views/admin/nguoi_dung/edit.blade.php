@@ -8,7 +8,7 @@
 
 <h5>Sửa người dùng</h5>
 
-<form action="{{route('admin.member.update',['id' => $NguoiDung->id ])}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.member.update',['id' => $NguoiDung->id ])}}" method="POST" class="card p-2" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="form-group col-md-6">

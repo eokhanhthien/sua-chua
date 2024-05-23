@@ -7,7 +7,7 @@
     </a>
 
 <h5>Thêm mới Nhóm dịch vụ</h5>
-<form action="{{route('admin.NhomDV.store')}}" method="POST">
+<form action="{{route('admin.NhomDV.store')}}" class="card p-2" method="POST">
     @csrf
     <div class="form-group">
         <label for="name">Tên nhóm dịch vụ</label>

@@ -7,7 +7,7 @@
     </a>
 
 <h5>Thêm mới dịch vụ</h5>
-<form action="{{route('admin.dichvu.store')}}" method="POST" enctype="multipart/form-data" >
+<form action="{{route('admin.dichvu.store')}}" method="POST" class="card p-2" enctype="multipart/form-data" >
     @csrf
     <div class="form-group">
         <label for="name">Tên dịch vụ</label>

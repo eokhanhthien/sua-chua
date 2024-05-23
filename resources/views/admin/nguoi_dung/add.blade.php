@@ -8,7 +8,7 @@
 
 <h5>Thêm mới đoàn viên</h5>
 
-<form action="{{route('admin.member.store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.member.store')}}" method="POST" class="card p-2" enctype="multipart/form-data">
     @csrf
     <div class="row">
         <div class="form-group col-md-6">

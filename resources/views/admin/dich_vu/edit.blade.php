@@ -7,7 +7,7 @@
         <button class="btn btn-primary mb-4"><i class="fa fa-arrow-left" aria-hidden="true"></i> Quay lại</button>
     </a>
 <h5>Sửa dịch vụ</h5>
-<form action="{{route('admin.dichvu.update', ['id' => $DichVu->id ])}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('admin.dichvu.update', ['id' => $DichVu->id ])}}" method="POST"  class="card p-2" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="name">Tên dịch vụ</label>

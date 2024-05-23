@@ -68,15 +68,6 @@ class NguoiDung extends Model implements Authenticatable
         return 'remember_token';
     }
 
-    public function mssv()
-    {
-        return $this->hasOne(Background::class, 'union_member_id', 'id');
-    }
-
-    public  function background()
-    {
-        return $this->hasOne(Background::class, 'union_member_id', 'id');
-    }
 
     public function group()
     {

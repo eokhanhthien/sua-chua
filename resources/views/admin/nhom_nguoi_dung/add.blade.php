@@ -7,7 +7,7 @@
     </a>
 
 <h5>Thêm mới nhóm người dùng</h5>
-<form action="{{route('admin.NhomNguoiDung.store')}}" method="POST">
+<form action="{{route('admin.NhomNguoiDung.store')}}" class="card p-2" method="POST">
     @csrf
     <div class="form-group">
         <label for="name">Tên nhóm người dùng</label>

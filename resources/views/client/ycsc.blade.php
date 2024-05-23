@@ -23,7 +23,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-12">
-        <table class="table table-striped" id="data-table">
+        <table class="table table-striped table-dark" id="data-table">
             <thead>
               <tr>
                 <th scope="col">#</th>

@@ -24,7 +24,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-12">
-        <table class="table table-striped" id="data-table">
+        <table class="table table-striped table-dark" id="data-table">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -41,7 +41,7 @@
                 <td>{{$rule->description}}</td>
                 <td>
                     <a style="text-decoration: none" href="{{route('admin.rule.edit', ['id' => $rule->id ])}}">
-                        <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-info"><i class="fas fa-edit"></i></button>
                     </a>
                     <a style="text-decoration: none" href="{{route('admin.rule.delete', ['id' => $rule->id ])}}">
                         <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
