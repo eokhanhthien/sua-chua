@@ -29,7 +29,17 @@ class IndexController extends Controller
                 return view('admin.dashboard.index',compact('tho','khach','dichvu'));
             }elseif(Auth::guard('user')->user()->ID_Nhom == 2 && Auth::guard('user')->user()->TrangThai == 1){
                 $don = YeuCauSuaChua::where('ID_Tho', Auth::guard('user')->user()->id)->get();
-                return view('technical.dashboard.index',compact('don'));
+                $knsc = KhaNangSuaChua::where('ID_Tho', Auth::guard('user')->user()->id)->get();
+                
+                $sum = 0;
+                foreach($knsc as $item){
+                    $sum += $item->GiaTho;
+                }
+
+                $sum_huy= HoaDon::where('ID_Tho', Auth::guard('user')->user()->id)->where('TrangThaiThanhToan',2)->count();
+
+
+                return view('technical.dashboard.index',compact('don','sum','knsc','sum_huy'));
             }else{
                 Auth::guard('user')->logout();
                 return redirect()->route('admin.login.index')->with('error', 'Tài khoản của bạn chưa được duyệt');
