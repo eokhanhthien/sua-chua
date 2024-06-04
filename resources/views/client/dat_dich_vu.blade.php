@@ -8,6 +8,17 @@ style="background-color: rgb(250, 250, 250);"
         <h2>Liên hệ đến thợ {{$dich_vu->Ten}} </h2>
       </div>
 
+      {{-- tìm kiếm --}}
+      <div class="row">
+        <div class="col-md-4">
+          <form action="" method="GET">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" name="search" placeholder="Tìm kiếm theo địa điểm" aria-label="Recipient's username" aria-describedby="button-addon2">
+              <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Tìm kiếm</button>
+            </div>
+          </form>
+        </div>
+      </div>
       <div class="row">
 
         @foreach($knsc as $item)

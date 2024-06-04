@@ -435,15 +435,28 @@ class IndexController extends Controller
     }
 
 
-    public function chi_tiet_dich_vu($id){
+    public function chi_tiet_dich_vu(Request $request,$id){
         $nhom_dich_vu = NhomDichVu::find( $id );
-        $dich_vu = DichVu::where('ID_Nhom',$id)->get();
+        $dich_vu = DichVu::where('ID_Nhom',$id);
+        if($request->search){
+            $dich_vu = $dich_vu->where('Ten','like','%'.$request->search.'%');
+        }
+        $dich_vu = $dich_vu->get();
+        
         return view('client.chi_tiet_dich_vu',compact('dich_vu','nhom_dich_vu'));
     }
 
-    public function dat_dich_vu($id){
+    public function dat_dich_vu(Request $request,$id){
         $dich_vu = DichVu::find( $id );
         $knsc = KhaNangSuaChua::where('ID_DichVu',$id)->get();
+        $knsc->load('tho');
+        
+        if($request->search){
+            $knsc = KhaNangSuaChua::where('ID_DichVu',$id)->whereHas('tho', function($query) use ($request){
+                $query->where('DiaChi','like','%'.$request->search.'%');
+            })->get();
+        }
+
         return view('client.dat_dich_vu',compact('dich_vu','knsc'));
     }
 
